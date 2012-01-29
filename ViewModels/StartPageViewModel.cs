@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 using Reader.Workers;
 using Reader.Models;
 using System.Collections.Generic;
@@ -43,23 +34,27 @@ namespace Reader.ViewModels
         /// </summary>
         public void Update()
         {
-           RssManager.Instance.ReadFeed(@"http://channel9.msdn.com/feeds/rss", RssRetrieved);
+          var manager = new RssManager();
+            manager.ReadRssCompleted+=ManagerReadRssCompleted;
+
+            manager.ReadFeedAsync(@"http://channel9.msdn.com/feeds/rss");
+        }
+
+        private void ManagerReadRssCompleted(object sender, ReadFeedCallbackArguments args)
+        {
+           var manager = sender as RssManager;
+           if (manager != null)
+               manager.ReadRssCompleted -= ManagerReadRssCompleted;
+
+           if (String.IsNullOrEmpty(args.ErrorMessage))
+           {
+               FeedItems = args.FeedItems;
+               PropertyChanged(null, new PropertyChangedEventArgs("FeedItems"));
+           }
         }
 
 
-        /// <summary>
-        /// Callback that is executed after thee feed is downloaded
-        /// </summary>
-        /// <param name="args"></param>
-        private void RssRetrieved(ReadFeedCallbackArguments args)
-        {
-            if(String.IsNullOrEmpty(args.ErrorMessage))
-            {
-            FeedItems = args.FeedItems;
-            PropertyChanged(null, new PropertyChangedEventArgs("FeedItems"));
-            }
-         }
-
+  
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
