@@ -98,9 +98,7 @@
       <LastGenOutput>Text.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="StartPage.xaml">
       <SubType>Designer</SubType>
