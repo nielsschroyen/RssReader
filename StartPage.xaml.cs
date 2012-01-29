@@ -22,5 +22,10 @@ namespace Reader
             this.DataContext = new StartPageViewModel();
 
         }
+
+        private void update_Click(object sender, EventArgs e)
+        {
+            ((StartPageViewModel)DataContext).Update();
+        }
     }
 }

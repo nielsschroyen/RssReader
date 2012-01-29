@@ -7,151 +7,35 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
+    xmlns:Converters="clr-namespace:Reader.Converters"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.Resources>
+            <Converters:BoolToVisiblityConverter x:Key="BoolToVisiblityConverter" />
+        </Grid.Resources>
+        
         <!--Pivot Control-->
         <controls:Pivot Title="{Binding Title}">
             <!--Pivot item one-->
             <controls:PivotItem Header="Channel 9">
                 <Grid>
-                    <ListBox>
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
-                        <ListBoxItem Content="Item 1" />
+                    <ListBox ItemsSource="{Binding FeedItems}" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="5 5 10 5">
+                                    <TextBlock Text="{Binding Title}" FontSize="26"/>
+                                    <TextBlock Text="{Binding Description}" MaxHeight="60" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    
                     </ListBox>
                 </Grid>
             </controls:PivotItem>
@@ -163,16 +47,10 @@
         </controls:Pivot>
     </Grid>
 
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" Mode="Minimized" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="update" IconUri="/Images/appbar_button1.png" Click="update_Click" Text="Update"/>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
     
 </phone:PhoneApplicationPage>
