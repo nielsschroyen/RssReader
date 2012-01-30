@@ -22,24 +22,24 @@ namespace Reader {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Text {
+    public class AppResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Text() {
+        internal AppResources() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Reader.Text", typeof(Text).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Reader.AppResources", typeof(AppResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace Reader {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,20 +61,56 @@ namespace Reader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rss Reader.
+        ///   Looks up a localized string similar to add channel.
         /// </summary>
-        internal static string AppName {
+        public static string AddChannelTitle {
+            get {
+                return ResourceManager.GetString("AddChannelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rss reader.
+        /// </summary>
+        public static string AppName {
             get {
                 return ResourceManager.GetString("AppName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Channel 9.
+        ///   Looks up a localized string similar to edit channel.
         /// </summary>
-        internal static string RssString {
+        public static string EditChannelTitle {
             get {
-                return ResourceManager.GetString("RssString", resourceCulture);
+                return ResourceManager.GetString("EditChannelTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to name.
+        /// </summary>
+        public static string FeedName {
+            get {
+                return ResourceManager.GetString("FeedName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to url.
+        /// </summary>
+        public static string FeedUrl {
+            get {
+                return ResourceManager.GetString("FeedUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
     }

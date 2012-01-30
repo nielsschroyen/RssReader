@@ -11,7 +11,8 @@ namespace Reader.ViewModels
         /// <summary>
         /// Title of the view
         /// </summary>
-        public string Title { get { return Text.AppName; } }
+        public string Title { get { return AppResources.AppName; }
+        }
 
         private List<PivotItem> _pivotItems;
         public List<PivotItem> PivotItems
@@ -52,7 +53,7 @@ namespace Reader.ViewModels
 
 
             PivotItems = items;
-            Update();
+           
             
         }
 

@@ -12,23 +12,23 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     xmlns:Converters="clr-namespace:Reader.Converters"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
+    SupportedOrientations="Portrait" 
+    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPageLoaded">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
             <Converters:BoolToVisiblityConverter x:Key="BoolToVisiblityConverter" />
         </Grid.Resources>
-        
-        <!--Pivot Control-->
-        <controls:Pivot Title="{Binding Title}" ItemsSource="{Binding PivotItems}" />
+            <controls:Pivot Title="{Binding Title}" ItemsSource="{Binding PivotItems}" />
+
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" Mode="Minimized" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="update" IconUri="/Images/appbar_button1.png" Click="update_Click" Text="Update"/>
+            <shell:ApplicationBarIconButton x:Name="update" IconUri="/Images/appbar_button1.png" Click="UpdateClick" Text="Update"/>
+            <shell:ApplicationBarIconButton x:Name="edit" IconUri="/Images/appbar_button1.png" Click="UpdateClick" Text="Edit"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
-    
+
 </phone:PhoneApplicationPage>

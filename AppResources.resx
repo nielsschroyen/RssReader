@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppName" xml:space="preserve">
-    <value>Rss Reader</value>
+  <data name="AddChannelTitle" xml:space="preserve">
+    <value>add channel</value>
   </data>
-  <data name="RssString" xml:space="preserve">
-    <value>Channel 9</value>
+  <data name="AppName" xml:space="preserve">
+    <value>rss reader</value>
+  </data>
+  <data name="EditChannelTitle" xml:space="preserve">
+    <value>edit channel</value>
+  </data>
+  <data name="FeedName" xml:space="preserve">
+    <value>name</value>
+  </data>
+  <data name="FeedUrl" xml:space="preserve">
+    <value>url</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>save</value>
   </data>
 </root>

@@ -8,11 +8,16 @@ namespace Reader
         public StartPage()
         {
             InitializeComponent();
-            this.DataContext = new StartPageViewModel();
+            DataContext = new StartPageViewModel();
 
         }
 
-        private void update_Click(object sender, EventArgs e)
+        private void UpdateClick(object sender, EventArgs e)
+        {
+            ((StartPageViewModel)DataContext).Update();
+        }
+
+        private void PhoneApplicationPageLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             ((StartPageViewModel)DataContext).Update();
         }
