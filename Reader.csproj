@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Converters\BoolToVisiblityConverter.cs" />
     <Compile Include="Models\Feed.cs" />
+    <Compile Include="Models\NotifyPropertyChangedBase.cs" />
     <Compile Include="Models\RssFeedItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartPage.xaml.cs">

@@ -10,7 +10,22 @@
                     Header="{Binding Feed.Name}">
     
     <Grid x:Name="LayoutRoot">
+        <Grid.Resources>
+            <LinearGradientBrush x:Key="recBrushTop" StartPoint="0,0" EndPoint="0,1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="{StaticResource PhoneBackgroundColor}"/>
+                    <GradientStop Offset="1" Color="#00000000" />
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="recBrushBottom" StartPoint="0,0" EndPoint="0,1">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStop Offset="0" Color="#00000000"/>
+                    <GradientStop Offset="1" Color="{StaticResource PhoneBackgroundColor}"/>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+        </Grid.Resources>
         <Grid>
+           
             <ListBox ItemsSource="{Binding FeedItems}" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -19,8 +34,12 @@
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
+                
 
             </ListBox>
+            <Rectangle Height="20" Fill="{StaticResource recBrushTop }" VerticalAlignment="Top"/>
+            <Rectangle Height="20" Fill="{StaticResource recBrushBottom }" VerticalAlignment="Bottom"/>
+
         </Grid>
     </Grid>
 </Controls:PivotItem>

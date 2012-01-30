@@ -2,11 +2,10 @@
 using Reader.Controls;
 using Reader.Models;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace Reader.ViewModels
 {
-    public class StartPageViewModel :INotifyPropertyChanged
+    public class StartPageViewModel :NotifyPropertyChangedBase
     {
 
         /// <summary>
@@ -14,7 +13,14 @@ namespace Reader.ViewModels
         /// </summary>
         public string Title { get { return Text.AppName; } }
 
-        public List<PivotItem> PivotItems { get; set; }
+        private List<PivotItem> _pivotItems;
+        public List<PivotItem> PivotItems
+        {
+            get { return _pivotItems; }
+            set { _pivotItems = value;
+            NotifyPropertyChanged(() => PivotItems);
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -50,14 +56,12 @@ namespace Reader.ViewModels
             
         }
 
+        /// <summary>
+        /// Update all the feeds
+        /// </summary>
         public void Update()
         {
             PivotItems.ForEach(p => ((PivotItemViewModel) p.DataContext).Update());
         }
-
-
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
