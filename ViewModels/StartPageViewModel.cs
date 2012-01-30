@@ -1,5 +1,5 @@
-﻿using System;
-using Reader.Workers;
+﻿using Microsoft.Phone.Controls;
+using Reader.Controls;
 using Reader.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,47 +14,50 @@ namespace Reader.ViewModels
         /// </summary>
         public string Title { get { return Text.AppName; } }
 
-        /// <summary>
-        /// Listbox items
-        /// </summary>
-        public List<RssFeedItem> FeedItems {get;set;}
-
+        public List<PivotItem> PivotItems { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public StartPageViewModel()
         {
+            var items = new List<PivotItem>
+                            {
+                                new PivotItemControl
+                                    {
+                                        DataContext =
+                                            new PivotItemViewModel(new Feed
+                                                                       {
+                                                                           FeedUrl = @"http://channel9.msdn.com/feeds/rss",
+                                                                           Name = "channel 9"
+                                                                       })
+                                    }        ,
+                                new PivotItemControl
+                                    {
+                                        DataContext =
+                                            new PivotItemViewModel(new Feed
+                                                                       {
+                                                                           FeedUrl =
+                                                                               @"http://feeds.feedburner.com/tweakers/mixed",
+                                                                           Name = "tweakers"
+                                                                       })
+                                    }
+                            };
+
+
+            PivotItems = items;
             Update();
             
         }
 
-        /// <summary>
-        /// Update the feed
-        /// </summary>
         public void Update()
         {
-          var manager = new RssManager();
-            manager.ReadRssCompleted+=ManagerReadRssCompleted;
-
-            manager.ReadFeedAsync(@"http://channel9.msdn.com/feeds/rss");
-        }
-
-        private void ManagerReadRssCompleted(object sender, ReadFeedCallbackArguments args)
-        {
-           var manager = sender as RssManager;
-           if (manager != null)
-               manager.ReadRssCompleted -= ManagerReadRssCompleted;
-
-           if (String.IsNullOrEmpty(args.ErrorMessage))
-           {
-               FeedItems = args.FeedItems;
-               PropertyChanged(null, new PropertyChangedEventArgs("FeedItems"));
-           }
+            PivotItems.ForEach(p => ((PivotItemViewModel) p.DataContext).Update());
         }
 
 
-  
+
+
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

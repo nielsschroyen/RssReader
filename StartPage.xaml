@@ -22,29 +22,7 @@
         </Grid.Resources>
         
         <!--Pivot Control-->
-        <controls:Pivot Title="{Binding Title}">
-            <!--Pivot item one-->
-            <controls:PivotItem Header="Channel 9">
-                <Grid>
-                    <ListBox ItemsSource="{Binding FeedItems}" >
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="5 5 10 5">
-                                    <TextBlock Text="{Binding Title}" FontSize="26"/>
-                                    <TextBlock Text="{Binding Description}" MaxHeight="60" TextWrapping="Wrap"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                    
-                    </ListBox>
-                </Grid>
-            </controls:PivotItem>
-
-            <!--Pivot item two-->
-            <controls:PivotItem Header="item2">
-                <Grid/>
-            </controls:PivotItem>
-        </controls:Pivot>
+        <controls:Pivot Title="{Binding Title}" ItemsSource="{Binding PivotItems}" />
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
