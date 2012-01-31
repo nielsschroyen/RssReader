@@ -2,9 +2,11 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace Reader.Models
 {
+    [DataContract]
     public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         /// <summary>

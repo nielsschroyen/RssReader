@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.Phone.Controls;
 using Reader.Models;
 using Reader.Workers;
 

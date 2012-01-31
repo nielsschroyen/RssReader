@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Reader.Models
 {
+    [DataContract]
     public class Feed:NotifyPropertyChangedBase
     {
+        private Guid _id = Guid.NewGuid();
         private string _name;
         public string Name
         {
@@ -28,16 +31,22 @@ namespace Reader.Models
         {
             get
             {
-                if(!string.IsNullOrEmpty(Name)&& Uri.IsWellFormedUriString(FeedUrl,UriKind.RelativeOrAbsolute))
-                    return true;
-                return false;
+                return !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(FeedUrl);
             }
         }
 
 
         public Feed Clone()
         {
-            return new Feed {FeedUrl = _feedUrl, Name = _name};
+            return new Feed {FeedUrl = _feedUrl, Name = _name, _id = _id};
+        }
+
+        public override bool Equals(object obj)
+        {
+            var f = obj as Feed;
+            if (f != null)
+                return f._id == _id;
+            return false;
         }
     }
 }

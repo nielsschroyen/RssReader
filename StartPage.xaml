@@ -20,8 +20,7 @@
         <Grid.Resources>
             <Converters:BoolToVisiblityConverter x:Key="BoolToVisiblityConverter" />
         </Grid.Resources>
-            <controls:Pivot Title="{Binding Title}" ItemsSource="{Binding PivotItems}" />
-
+            <controls:Pivot x:Name="_pivot" Title="{Binding Title}" ItemsSource="{Binding PivotItems}" />
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

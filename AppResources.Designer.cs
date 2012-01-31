@@ -70,11 +70,29 @@ namespace Reader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to rss reader.
+        ///   Looks up a localized string similar to add a feed.
+        /// </summary>
+        public static string AddFeed {
+            get {
+                return ResourceManager.GetString("AddFeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RSS READER.
         /// </summary>
         public static string AppName {
             get {
                 return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to auto refresh.
+        /// </summary>
+        public static string AutoRefresh {
+            get {
+                return ResourceManager.GetString("AutoRefresh", resourceCulture);
             }
         }
         
@@ -111,6 +129,15 @@ namespace Reader {
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
     }

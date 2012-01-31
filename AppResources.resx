@@ -120,8 +120,14 @@
   <data name="AddChannelTitle" xml:space="preserve">
     <value>add channel</value>
   </data>
+  <data name="AddFeed" xml:space="preserve">
+    <value>add a feed</value>
+  </data>
   <data name="AppName" xml:space="preserve">
-    <value>rss reader</value>
+    <value>RSS READER</value>
+  </data>
+  <data name="AutoRefresh" xml:space="preserve">
+    <value>auto refresh</value>
   </data>
   <data name="EditChannelTitle" xml:space="preserve">
     <value>edit channel</value>
@@ -134,5 +140,8 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>save</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>settings</value>
   </data>
 </root>

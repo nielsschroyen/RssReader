@@ -8,7 +8,7 @@ namespace Reader
         public StartPage()
         {
             InitializeComponent();
-            DataContext = new StartPageViewModel();
+            DataContext = new StartPageViewModel(this._pivot);
 
         }
 
@@ -20,6 +20,12 @@ namespace Reader
         private void PhoneApplicationPageLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
             ((StartPageViewModel)DataContext).Update();
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            ((StartPageViewModel)DataContext).ReInitialize();
+            base.OnNavigatedTo(e);
         }
     }
 }

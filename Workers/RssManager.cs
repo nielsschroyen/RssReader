@@ -47,8 +47,10 @@ namespace Reader.Workers
                     var xml = XElement.Parse(e.Result);
                     var items = xml.Elements("channel").Elements("item").Select(element => new RssFeedItem
                                                                                                {
-                                                                                                   Description = Regex.Replace(element.Element("description").Value, @"<[^>]+>", ""), Title = element.Element("title").Value, //  ChannelId = int.Parse(element.Element("channel_id").Value),
-                                                                                                   Link = element.Element("link").Value, PublishDate = DateTime.Parse(element.Element("pubDate").Value)
+                                                                                                   Description = Regex.Replace(ReadElement(element, "description"), @"<[^>]+>", ""),
+                                                                                                   Title = ReadElement(element, "title"),
+                                                                                                   Link = ReadElement(element, "link"), 
+                                                                                                   PublishDate = DateTime.Parse(ReadElement(element, "pubDate"))
                                                                                                }).ToList();
 
                     if (ReadRssCompleted != null)
@@ -56,7 +58,7 @@ namespace Reader.Workers
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                   if (ReadRssCompleted != null)
                         ReadRssCompleted(this, new ReadFeedCallbackArguments {ErrorMessage = "Error occurred..."});
@@ -64,7 +66,16 @@ namespace Reader.Workers
 
         }
 
-     
-
+        /// <summary>
+        /// Read element into string
+        /// </summary>
+        /// <param name="element">Element to read</param>
+        /// <param name="elementName">Name of the element</param>
+        /// <returns></returns>
+        private static string ReadElement(XElement element, string elementName)
+        {
+            var val = element.Element(elementName);
+            return val==null? "" : val.Value;
+        }
     }
 }
