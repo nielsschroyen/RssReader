@@ -26,7 +26,7 @@
         </Grid.Resources>
         <Grid>
            
-            <ListBox ItemsSource="{Binding FeedItems}" >
+            <ListBox ItemsSource="{Binding FeedItems}" x:Name="_listbox" SelectionChanged="ListBoxSelectionChanged" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Margin="5 5 10 5">

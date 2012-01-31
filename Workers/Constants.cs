@@ -10,6 +10,10 @@ namespace Reader.Workers
         public static readonly string AddItem = "addtItem";
         public static readonly string EditItem = "editItem";
         public static readonly string EditedItem = "editedItem";
-        public static readonly Uri EditPageUri = new Uri("/EditChannel.Xaml",UriKind.RelativeOrAbsolute);
+        public static readonly string OpenFeed = "openFeed";
+
+        public static readonly Uri EditPageUri = new Uri("/EditChannel.Xaml",UriKind.RelativeOrAbsolute);  
+        public static readonly Uri  FeedItemPageUri =  new Uri("/FeedItemPage.Xaml",UriKind.RelativeOrAbsolute);
+            
     }
 }

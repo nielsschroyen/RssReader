@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 using Reader.Models;
 using Reader.Workers;
 
@@ -58,6 +60,15 @@ namespace Reader.ViewModels
 
             if (String.IsNullOrEmpty(args.ErrorMessage))
                 FeedItems = args.FeedItems;
+        }
+
+        public void OpenItem(RssFeedItem selectedItem)
+        {
+            if (selectedItem != null)
+            {
+                PhoneApplicationService.Current.State[Constants.OpenFeed] = selectedItem;
+                ((PhoneApplicationFrame) Application.Current.RootVisual).Navigate(Constants.FeedItemPageUri);
+            }
         }
     }
 }
