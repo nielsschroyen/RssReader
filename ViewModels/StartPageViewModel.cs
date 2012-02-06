@@ -105,16 +105,16 @@ namespace Reader.ViewModels
         }
 
         /// <summary>
-        /// Update all the feeds
+        /// Update the selected feed
         /// </summary>
         public void Update()
         {
-            PivotItems.ForEach(p =>
-                                   {
-                                       var pm =  p.DataContext as PivotItemViewModel;
-                                       if(pm!=null)
-                                         pm.Update();
-                                   });
+            var selectedItem = _pivotPage._pivot.SelectedItem;
+
+            var pivotItemControl = selectedItem as PivotItemControl;
+            if (pivotItemControl == null) return;
+            var pm = pivotItemControl.DataContext as PivotItemViewModel;
+            if (pm != null) pm.Update();
         }
 
 
