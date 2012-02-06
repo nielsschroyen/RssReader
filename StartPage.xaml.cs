@@ -49,7 +49,7 @@ namespace Reader
 
         private void PhoneApplicationPageLoaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            ((StartPageViewModel)DataContext).Update();
+            ((StartPageViewModel)DataContext).UpdateAll();
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)

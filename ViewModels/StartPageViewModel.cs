@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO.IsolatedStorage;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Serialization;
 using Microsoft.Phone.Controls;
@@ -78,7 +79,16 @@ namespace Reader.ViewModels
 
         void EditItem(object sender, System.EventArgs e)
         {
-        //    throw new System.NotImplementedException();
+            var selectedItem = _pivotPage._pivot.SelectedItem;
+
+            var pivotItemControl = selectedItem as PivotItemControl;
+            if (pivotItemControl == null) return;
+            var pm = pivotItemControl.DataContext as PivotItemViewModel;
+            if (pm != null)
+            {
+                PhoneApplicationService.Current.State[Constants.EditItem] = pm.Feed;
+                ((PhoneApplicationFrame)Application.Current.RootVisual).Navigate(Constants.EditPageUri);
+            }
         }
 
         private void PivotSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -119,7 +129,18 @@ namespace Reader.ViewModels
 
 
    
-
+        /// <summary>
+        /// Update all the feeds
+        /// </summary>
+        public void UpdateAll()
+        {
+            PivotItems.ForEach(p =>
+                                   {
+                                       var pm = p.DataContext as PivotItemViewModel;
+                                       if (pm != null)
+                                           pm.Update();
+                                   });
+        }
 
         public void ReInitialize()
         {
