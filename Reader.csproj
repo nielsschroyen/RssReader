@@ -17,6 +17,7 @@
     <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
     <SilverlightApplication>true</SilverlightApplication>
     <SupportedCultures>
+      nl-NL;
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
@@ -85,6 +86,11 @@
       <DependentUpon>PivotItemControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\BoolToVisiblityConverter.cs" />
+    <Compile Include="AppResources.nl-NL.Designer.cs">
+      <DependentUpon>AppResources.nl-NL.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="EditChannel.xaml.cs">
       <DependentUpon>EditChannel.xaml</DependentUpon>
     </Compile>
@@ -146,8 +152,14 @@
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="AppResources.nl-NL.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.nl-NL.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="obj\" />
     <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
