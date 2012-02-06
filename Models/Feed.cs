@@ -6,8 +6,10 @@ namespace Reader.Models
     [DataContract]
     public class Feed:NotifyPropertyChangedBase
     {
-        private Guid _id = Guid.NewGuid();
+        [DataMember]
+        public Guid Id = Guid.NewGuid();
         private string _name;
+        [DataMember]
         public string Name
         {
             get { return _name; }
@@ -18,6 +20,7 @@ namespace Reader.Models
         }
 
         private string _feedUrl;
+        [DataMember]
         public string FeedUrl
         {
             get { return _feedUrl; }
@@ -38,14 +41,14 @@ namespace Reader.Models
 
         public Feed Clone()
         {
-            return new Feed {FeedUrl = _feedUrl, Name = _name, _id = _id};
+            return new Feed {FeedUrl = _feedUrl, Name = _name, Id = Id};
         }
 
         public override bool Equals(object obj)
         {
             var f = obj as Feed;
             if (f != null)
-                return f._id == _id;
+                return f.Id == Id;
             return false;
         }
     }

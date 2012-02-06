@@ -24,9 +24,7 @@
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" Mode="Minimized" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="update" IconUri="/Images/appbar_button1.png" Click="UpdateClick" Text="Update"/>
-            <shell:ApplicationBarIconButton x:Name="edit" IconUri="/Images/appbar_button1.png" Click="UpdateClick" Text="Edit"/>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False">
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 

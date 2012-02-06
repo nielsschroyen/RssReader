@@ -1,4 +1,7 @@
-﻿using System.IO.IsolatedStorage;
+﻿using System;
+using System.IO.IsolatedStorage;
+using System.Linq;
+using System.Windows.Controls;
 using System.Xml.Serialization;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -19,7 +22,7 @@ namespace Reader.ViewModels
         }
 
         private List<PivotItem> _pivotItems;
-        private Pivot _pivot;
+        private readonly StartPage _pivotPage;
 
         public List<PivotItem> PivotItems
         {
@@ -33,24 +36,66 @@ namespace Reader.ViewModels
         /// Constructor
         /// </summary>
         /// <param name="pivot"> </param>
-        public StartPageViewModel(Pivot pivot)
+        /// <param name="pivotPage"> </param>
+        public StartPageViewModel(StartPage pivotPage)
         {
-            _pivot = pivot;
-            InitStorage();
-
+            _pivotPage = pivotPage;
             var items = RetrieveItemsFromStorage();
-
             items.Add(new SettingsControl {DataContext = new SettingsViewModel()});
             PivotItems = items;
-           
-            
+            _pivotPage._pivot.SelectionChanged+=PivotSelectionChanged;
+            _pivotPage.EditButton.Click += EditItem;
+            _pivotPage.DeleteButtom.Click += DeleteItem;
         }
+
+        private void DeleteItem(object sender, EventArgs e)
+        {
+            var selectedItem = _pivotPage._pivot.SelectedItem;
+            if (selectedItem is PivotItemControl)
+            {
+                var index = _pivotPage._pivot.SelectedIndex;
+                var feed = ((PivotItemViewModel) ((PivotItemControl) selectedItem).DataContext).Feed;
+
+                ApplicationStorageManager.DeleteFeed(feed);
+
+                var newItems = PivotItems.Where(p =>
+                {
+                    var pm = p.DataContext as PivotItemViewModel;
+                    if (pm != null)
+                    {
+                        if (pm.Feed == feed)
+                            return false;
+                    }
+                    return true;
+                });
+
+                PivotItems = newItems.ToList();
+                _pivotPage._pivot.ItemsSource = PivotItems;
+                _pivotPage._pivot.SelectedIndex = index  % (PivotItems.Count);
+                _pivotPage._pivot.UpdateLayout();
+            }
+        }
+
+        void EditItem(object sender, System.EventArgs e)
+        {
+        //    throw new System.NotImplementedException();
+        }
+
+        private void PivotSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            bool canEdit = _pivotPage._pivot.SelectedItem is PivotItemControl;
+                _pivotPage.EditButton.IsEnabled = canEdit;
+                _pivotPage.DeleteButtom.IsEnabled = canEdit;
+        }
+
 
         private List<PivotItem> RetrieveItemsFromStorage()
         {
             var items = new List<PivotItem>();
-            _feeds = IsolatedStorageSettings.ApplicationSettings[Constants.RssData] as List<Feed>;
-            PhoneApplicationService.Current.State[Constants.RssData] = _feeds;
+
+            ApplicationStorageManager.InitializeStore(items);
+            _feeds = ApplicationStorageManager.GetFeeds();
+
             if (_feeds != null)
             {
                 _feeds.ForEach(f => items.Add(new PivotItemControl { DataContext = new PivotItemViewModel(f) }));
@@ -71,37 +116,8 @@ namespace Reader.ViewModels
                                    });
         }
 
-        private void InitStorage()
-        {
 
-      //      if (!IsolatedStorageSettings.ApplicationSettings.Contains(Constants.RssData))   
-      //        {
-                  AddSampleData();
-       //       }
-        }
-
-        private void AddSampleData()
-        {
-            var feeds = new List<Feed>
-                            {
-                                new Feed
-                                    {
-                                        FeedUrl = @"http://channel9.msdn.com/feeds/rss",
-                                        Name = "channel 9"
-                                    },
-                                new Feed
-                                    {
-                                        FeedUrl =
-                                            @"http://feeds.feedburner.com/tweakers/mixed",
-                                        Name = "tweakers"
-                                    }
-                            };
-
-
-            IsolatedStorageSettings.ApplicationSettings[Constants.RssData] = feeds;
-            IsolatedStorageSettings.ApplicationSettings.Save();
-            
-        }
+   
 
 
         public void ReInitialize()
@@ -112,10 +128,10 @@ namespace Reader.ViewModels
                 PhoneApplicationService.Current.State.Remove(Constants.AddedItem);
                 var pvvm = new PivotItemViewModel(addedItem);
                 PivotItems.Add(new PivotItemControl {DataContext = pvvm});
-                //NotifyPropertyChanged(() => PivotItems);
                 pvvm.Update();
-                _pivot.ItemsSource = null;
-                _pivot.ItemsSource = PivotItems;
+                _pivotPage._pivot.ItemsSource = null;
+                _pivotPage._pivot.ItemsSource = PivotItems;
+                _pivotPage._pivot.SelectedIndex = _pivotPage._pivot.Items.Count - 1;
             }
 
             if (PhoneApplicationService.Current.State.ContainsKey(Constants.EditedItem))

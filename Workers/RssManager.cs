@@ -28,7 +28,16 @@ namespace Reader.Workers
             // requested URI contains a query.
 
             client.DownloadStringCompleted += Downloaded;
-            client.DownloadStringAsync(new Uri(url));
+            try
+            {
+                client.DownloadStringAsync(new Uri(url));
+            }
+            catch (Exception)
+            {
+                
+             //   throw;
+            }
+         
         }
 
         /// <summary>

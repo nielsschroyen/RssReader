@@ -104,6 +104,7 @@
     <Compile Include="ViewModels\PivotItemViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\StartPageViewModel.cs" />
+    <Compile Include="Workers\ApplicationStorageManager.cs" />
     <Compile Include="Workers\Constants.cs" />
     <Compile Include="Workers\DelegateCommand.cs" />
     <Compile Include="Workers\ReadFeedCallbackArguments.cs" />

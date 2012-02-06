@@ -64,13 +64,14 @@ namespace Reader.ViewModels
             SaveButton.IsEnabled = FeedItem.IsValid;
         }
 
+        public EditChannelViewModel()
+        {
+            InitializeModel();
+        }
+
         private void Add()
         {
-            var feeds = IsolatedStorageSettings.ApplicationSettings[Constants.RssData] as List<Feed> ?? new List<Feed>();
-
-            feeds.Add(FeedItem);
-            IsolatedStorageSettings.ApplicationSettings[Constants.RssData] = feeds;
-            IsolatedStorageSettings.ApplicationSettings.Save();
+            ApplicationStorageManager.AddFeed(FeedItem);
 
 
             PhoneApplicationService.Current.State[Constants.AddedItem] = FeedItem;
@@ -78,29 +79,20 @@ namespace Reader.ViewModels
 
         }
 
+
         private void Edit()
         {
-            var feeds = IsolatedStorageSettings.ApplicationSettings[Constants.RssData] as List<Feed> ?? new List<Feed>();
-            feeds.ForEach(f =>
-                              {
-                                  if (f.Equals(FeedItem))
-                                  {
-                                      f.FeedUrl = FeedItem.FeedUrl;
-                                      f.Name = FeedItem.Name;
-                                  }
-                              });
-            IsolatedStorageSettings.ApplicationSettings[Constants.RssData] = feeds;
-            IsolatedStorageSettings.ApplicationSettings.Save();
-
             _realFeed.FeedUrl = FeedItem.FeedUrl;
             _realFeed.Name = FeedItem.Name;
+
+            ApplicationStorageManager.EditFeed(_realFeed);
 
             PhoneApplicationService.Current.State[Constants.EditedItem] = _realFeed;
             ((PhoneApplicationFrame)Application.Current.RootVisual).GoBack();
         }
 
 
-        public void ReInitialize()
+        private void InitializeModel()
         {
             if (PhoneApplicationService.Current.State.ContainsKey(Constants.EditItem))
             {

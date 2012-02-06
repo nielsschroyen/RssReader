@@ -129,6 +129,12 @@
   <data name="AutoRefresh" xml:space="preserve">
     <value>auto refresh</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>edit</value>
+  </data>
   <data name="EditChannelTitle" xml:space="preserve">
     <value>edit channel</value>
   </data>
@@ -143,5 +149,8 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>settings</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>refresh</value>
   </data>
 </root>

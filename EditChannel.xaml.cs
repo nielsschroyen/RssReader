@@ -21,12 +21,5 @@ namespace Reader
             ApplicationBar.Buttons.Add(appBarSaveButton);
             ((EditChannelViewModel)DataContext).SaveButton = appBarSaveButton;
         }
-
-        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            ((EditChannelViewModel)DataContext).ReInitialize();
-        }
-
     }
 }
