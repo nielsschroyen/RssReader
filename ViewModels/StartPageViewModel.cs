@@ -45,7 +45,7 @@ namespace Reader.ViewModels
             PivotItems = items;
             _pivotPage._pivot.SelectionChanged+=PivotSelectionChanged;
             _pivotPage.EditButton.Click += EditItem;
-            _pivotPage.DeleteButtom.Click += DeleteItem;
+            _pivotPage.DeleteButton.Click += DeleteItem;
         }
 
         private void DeleteItem(object sender, EventArgs e)
@@ -85,7 +85,8 @@ namespace Reader.ViewModels
         {
             bool canEdit = _pivotPage._pivot.SelectedItem is PivotItemControl;
                 _pivotPage.EditButton.IsEnabled = canEdit;
-                _pivotPage.DeleteButtom.IsEnabled = canEdit;
+                _pivotPage.DeleteButton.IsEnabled = canEdit;
+                _pivotPage.UpdateButton.IsEnabled = canEdit;
         }
 
 

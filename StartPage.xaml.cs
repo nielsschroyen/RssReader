@@ -10,7 +10,8 @@ namespace Reader
         private ApplicationBarIconButton _editButton;
         private ApplicationBarIconButton _deleteButton;
         public ApplicationBarIconButton EditButton { get { return _editButton; } }
-        public ApplicationBarIconButton DeleteButtom { get { return _deleteButton; } }
+        public ApplicationBarIconButton DeleteButton { get { return _deleteButton; } }
+        public ApplicationBarIconButton UpdateButton { get { return _updateButton; } }
 
         public StartPage()
         {
@@ -23,18 +24,19 @@ namespace Reader
         private void InitializeAppBar()
         {
           //Hack to dynamically change buttons
-            _updateButton = new ApplicationBarIconButton(
-            new Uri("/resources/icons/update.png", UriKind.Relative)) { Text = AppResources.Update };
+            _updateButton = new ApplicationBarIconButton
+                                {IconUri = new Uri("/Resources/Icons/appbar.sync.rest.png", UriKind.RelativeOrAbsolute), 
+                                    Text = AppResources.Update};
             _updateButton.Click += UpdateClick;
             ApplicationBar.Buttons.Add(_updateButton);
 
             _editButton = new ApplicationBarIconButton(
-           new Uri("/resources/icons/edit.png", UriKind.Relative)) { Text = AppResources.Edit };
+           new Uri("/Resources/Icons/appbar.edit.rest.png", UriKind.Relative)) { Text = AppResources.Edit };
             _editButton.Click += UpdateClick;
             ApplicationBar.Buttons.Add(_editButton);
 
             _deleteButton = new ApplicationBarIconButton(
-           new Uri("/resources/icons/delete.png", UriKind.Relative)) { Text = AppResources.Delete };
+           new Uri("/Resources/Icons/appbar.delete.rest.png", UriKind.Relative)) { Text = AppResources.Delete };
             _deleteButton.Click += UpdateClick;
             ApplicationBar.Buttons.Add(_deleteButton);
 

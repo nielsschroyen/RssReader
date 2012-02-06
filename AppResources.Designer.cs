@@ -88,7 +88,7 @@ namespace Reader {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to auto refresh.
+        ///   Looks up a localized string similar to update on startup.
         /// </summary>
         public static string AutoRefresh {
             get {

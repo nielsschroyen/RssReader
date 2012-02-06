@@ -127,7 +127,7 @@
     <value>RSS READER</value>
   </data>
   <data name="AutoRefresh" xml:space="preserve">
-    <value>auto refresh</value>
+    <value>update on startup</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>delete</value>

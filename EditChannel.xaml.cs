@@ -17,7 +17,7 @@ namespace Reader
         {
             //Hack to dynamically change the save button
             var appBarSaveButton = new ApplicationBarIconButton(
-            new Uri("/resources/icons/appbar.check.rest.png", UriKind.Relative)) { Text = AppResources.Save };
+            new Uri("/Resources/Icons/appbar.save.rest.png", UriKind.Relative)) { Text = AppResources.Save };
             ApplicationBar.Buttons.Add(appBarSaveButton);
             ((EditChannelViewModel)DataContext).SaveButton = appBarSaveButton;
         }
