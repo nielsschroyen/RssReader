@@ -23,6 +23,17 @@ namespace Reader.ViewModels
             }
         }
 
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            set
+            {
+                _isLoading = value;
+                NotifyPropertyChanged(() => IsLoading);
+            }
+        }
+
         /// <summary>
         /// The feed
         /// </summary>
@@ -42,10 +53,13 @@ namespace Reader.ViewModels
         /// </summary>
         public void Update()
         {
+            IsLoading = true;
             var manager = new RssManager();
             manager.ReadRssCompleted += ManagerReadRssCompleted;
             manager.ReadFeedAsync(Feed.FeedUrl);
         }
+
+      
 
         /// <summary>
         /// Called when the feedmanager downloaded the items
@@ -54,10 +68,12 @@ namespace Reader.ViewModels
         /// <param name="args">Contains the downloaded feeditems</param>
         private void ManagerReadRssCompleted(object sender, ReadFeedCallbackArguments args)
         {
+            IsLoading = false;
             var manager = sender as RssManager;
             if (manager != null)
+            {
                 manager.ReadRssCompleted -= ManagerReadRssCompleted;
-
+            }
             if (String.IsNullOrEmpty(args.ErrorMessage))
                 FeedItems = args.FeedItems;
         }

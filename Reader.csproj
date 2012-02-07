@@ -85,7 +85,7 @@
     <Compile Include="Controls\PivotItemControl.xaml.cs">
       <DependentUpon>PivotItemControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Converters\BoolToVisiblityConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="AppResources.nl-NL.Designer.cs">
       <DependentUpon>AppResources.nl-NL.resx</DependentUpon>
       <AutoGen>True</AutoGen>

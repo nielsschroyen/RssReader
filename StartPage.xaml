@@ -18,7 +18,7 @@
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.Resources>
-            <Converters:BoolToVisiblityConverter x:Key="BoolToVisiblityConverter" />
+            <Converters:BoolToVisibilityConverter x:Key="BoolToVisiblityConverter" />
         </Grid.Resources>
             <controls:Pivot x:Name="_pivot" Title="{Binding Title}" ItemsSource="{Binding PivotItems}" />
     </Grid>

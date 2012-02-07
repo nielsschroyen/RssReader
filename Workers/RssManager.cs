@@ -14,6 +14,9 @@ namespace Reader.Workers
     {
         public delegate void ReadRssEventHandler(object sender, ReadFeedCallbackArguments e);
         public event ReadRssEventHandler ReadRssCompleted;
+
+        public delegate void DownloadStringEventHandler(object sender, DownloadProgressChangedEventArgs e);
+        public event DownloadStringEventHandler DownloadProgressChanged;
     
         /// <summary>
         /// Reads the relevant Rss feed and returns a list off RssFeedItems
@@ -26,7 +29,8 @@ namespace Reader.Workers
 
             // Add a user agent header in case the 
             // requested URI contains a query.
-
+    
+            client.DownloadProgressChanged += ClientDownloadProgressChanged; 
             client.DownloadStringCompleted += Downloaded;
             try
             {
@@ -38,6 +42,12 @@ namespace Reader.Workers
              //   throw;
             }
          
+        }
+
+        void ClientDownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            if (DownloadProgressChanged != null)
+                DownloadProgressChanged(this, e);
         }
 
         /// <summary>
