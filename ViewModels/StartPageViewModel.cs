@@ -72,8 +72,11 @@ namespace Reader.ViewModels
 
                 PivotItems = newItems.ToList();
                 _pivotPage._pivot.ItemsSource = PivotItems;
-                _pivotPage._pivot.SelectedIndex = index  % (PivotItems.Count);
-                _pivotPage._pivot.UpdateLayout();
+                
+                var selectedIndex = index%(PivotItems.Count);
+                var element = (FrameworkElement)_pivotPage._pivot.Items[selectedIndex];
+                _pivotPage._pivot.SelectedItem = element;
+                element.UpdateLayout();
             }
         }
 
