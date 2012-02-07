@@ -36,10 +36,11 @@ namespace Reader.Workers
             {
                 client.DownloadStringAsync(new Uri(url));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                if (ReadRssCompleted != null)
+                    ReadRssCompleted(this, new ReadFeedCallbackArguments { ErrorMessage = ex.Message });
                 
-             //   throw;
             }
          
         }

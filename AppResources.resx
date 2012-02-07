@@ -138,6 +138,9 @@
   <data name="EditChannelTitle" xml:space="preserve">
     <value>edit channel</value>
   </data>
+  <data name="FeedErrorMessage" xml:space="preserve">
+    <value>Something went wrong, please check your internet connection and you feed url. Click on the refresh button to try again.</value>
+  </data>
   <data name="FeedName" xml:space="preserve">
     <value>name</value>
   </data>

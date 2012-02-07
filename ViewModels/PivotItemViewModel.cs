@@ -34,6 +34,15 @@ namespace Reader.ViewModels
             }
         }
 
+        private bool _hasError;
+        public bool HasError
+        {
+            get { return _hasError; }
+            set { _hasError = value;
+                NotifyPropertyChanged(() => HasError);
+            }
+        }
+
         /// <summary>
         /// The feed
         /// </summary>
@@ -54,6 +63,7 @@ namespace Reader.ViewModels
         public void Update()
         {
             IsLoading = true;
+            HasError = false;
             var manager = new RssManager();
             manager.ReadRssCompleted += ManagerReadRssCompleted;
             manager.ReadFeedAsync(Feed.FeedUrl);
@@ -75,7 +85,13 @@ namespace Reader.ViewModels
                 manager.ReadRssCompleted -= ManagerReadRssCompleted;
             }
             if (String.IsNullOrEmpty(args.ErrorMessage))
+            {
                 FeedItems = args.FeedItems;
+            }
+            else
+            {
+                HasError = true;
+            }
         }
 
         public void OpenItem(RssFeedItem selectedItem)

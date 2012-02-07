@@ -124,6 +124,15 @@ namespace Reader {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Something went wrong, please check your internet connection and you feed url. Click on the refresh button to try again..
+        /// </summary>
+        public static string FeedErrorMessage {
+            get {
+                return ResourceManager.GetString("FeedErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to name.
         /// </summary>
         public static string FeedName {

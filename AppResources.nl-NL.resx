@@ -138,6 +138,9 @@
   <data name="EditChannelTitle" xml:space="preserve">
     <value>wijzig kanaal</value>
   </data>
+  <data name="FeedErrorMessage" xml:space="preserve">
+    <value>Fout bij het laden van de feed, hebde gij wel internet? Zo ja kijk dan eens naar je feed url. Druk op update om het nog eens te proberen.</value>
+  </data>
   <data name="FeedName" xml:space="preserve">
     <value>naam</value>
   </data>

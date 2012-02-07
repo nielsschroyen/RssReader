@@ -43,12 +43,14 @@
             <Grid x:Name="LoadingGrid" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}">
                 <Rectangle Fill="{StaticResource PhoneBackgroundBrush}" Opacity="0.8"/>
 
-                <StackPanel VerticalAlignment="Center">      
-                    <TextBlock Text="{Binding Path=LocalizedResources.Loading, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center"/>
-                </StackPanel>
-                
+                    <TextBlock Margin="0 -60 0 0" Text="{Binding Path=LocalizedResources.Loading, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
+            </Grid>
 
+            <Grid Visibility="{Binding HasError, Converter={StaticResource BoolToVisibilityConverter}}">
+                <Rectangle Fill="{StaticResource PhoneBackgroundBrush}" Opacity="0.8"/>
+
+                <TextBlock Margin="20 -60 20 0" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.FeedErrorMessage, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>
             <Rectangle Height="20" Fill="{StaticResource recBrushTop }" VerticalAlignment="Top"/>
