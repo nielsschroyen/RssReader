@@ -18,7 +18,7 @@ namespace Reader
             InitializeComponent();
             InitializeAppBar();
             DataContext = new StartPageViewModel(this);
-           
+            ((StartPageViewModel)DataContext).UpdateAll();
         }
 
         private void InitializeAppBar()
@@ -47,10 +47,6 @@ namespace Reader
             ((StartPageViewModel)DataContext).Update();
         }
 
-        private void PhoneApplicationPageLoaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ((StartPageViewModel)DataContext).UpdateAll();
-        }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {

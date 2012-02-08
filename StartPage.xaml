@@ -13,7 +13,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     xmlns:Converters="clr-namespace:Reader.Converters"
     SupportedOrientations="Portrait" 
-    shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPageLoaded">
+    shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
