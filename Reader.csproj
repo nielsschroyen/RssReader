@@ -91,6 +91,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Converters\HtmlToNormalTextConverter.cs" />
     <Compile Include="EditChannel.xaml.cs">
       <DependentUpon>EditChannel.xaml</DependentUpon>
     </Compile>
@@ -113,8 +114,9 @@
     <Compile Include="Workers\ApplicationStorageManager.cs" />
     <Compile Include="Workers\Constants.cs" />
     <Compile Include="Workers\DelegateCommand.cs" />
+    <Compile Include="Workers\HtmlToTextWorker.cs" />
     <Compile Include="Workers\ReadFeedCallbackArguments.cs" />
-    <Compile Include="Workers\RssManager.cs" />
+    <Compile Include="Workers\RssDownloader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -133,6 +135,12 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Icons\appbar.web.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\appbar.share.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Icons\appbar.sync.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -143,6 +151,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Icons\appbar.edit.rest.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\appbar.upload.rest.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

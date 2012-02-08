@@ -64,7 +64,7 @@ namespace Reader.ViewModels
         {
             IsLoading = true;
             HasError = false;
-            var manager = new RssManager();
+            var manager = new RssDownloader();
             manager.ReadRssCompleted += ManagerReadRssCompleted;
             manager.ReadFeedAsync(Feed.FeedUrl);
         }
@@ -74,12 +74,12 @@ namespace Reader.ViewModels
         /// <summary>
         /// Called when the feedmanager downloaded the items
         /// </summary>
-        /// <param name="sender">Should be the RssManager</param>
+        /// <param name="sender">Should be the RssDownloader</param>
         /// <param name="args">Contains the downloaded feeditems</param>
         private void ManagerReadRssCompleted(object sender, ReadFeedCallbackArguments args)
         {
             IsLoading = false;
-            var manager = sender as RssManager;
+            var manager = sender as RssDownloader;
             if (manager != null)
             {
                 manager.ReadRssCompleted -= ManagerReadRssCompleted;

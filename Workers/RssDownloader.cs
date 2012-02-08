@@ -10,7 +10,7 @@ namespace Reader.Workers
     /// <summary>
     /// RSS manager to read rss feeds
     /// </summary>
-    public class RssManager
+    public class RssDownloader
     {
         public delegate void ReadRssEventHandler(object sender, ReadFeedCallbackArguments e);
         public event ReadRssEventHandler ReadRssCompleted;
@@ -67,7 +67,7 @@ namespace Reader.Workers
                     var xml = XElement.Parse(e.Result);
                     var items = xml.Elements("channel").Elements("item").Select(element => new RssFeedItem
                                                                                                {
-                                                                                                   Description = Regex.Replace(ReadElement(element, "description"), @"<[^>]+>", ""),
+                                                                                                   Description = (ReadElement(element, "description")),
                                                                                                    Title = ReadElement(element, "title"),
                                                                                                    Link = ReadElement(element, "link"), 
                                                                                                    PublishDate = DateTime.Parse(ReadElement(element, "pubDate"))

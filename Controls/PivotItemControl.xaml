@@ -13,27 +13,14 @@
         <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Controls:PivotItem.Resources>
     <Grid x:Name="LayoutRoot">
-        <Grid.Resources>
-            <LinearGradientBrush x:Key="recBrushTop" StartPoint="0,0" EndPoint="0,1">
-                <LinearGradientBrush.GradientStops>
-                    <GradientStop Offset="0" Color="{StaticResource PhoneBackgroundColor}"/>
-                    <GradientStop Offset="1" Color="#00000000" />
-                </LinearGradientBrush.GradientStops>
-            </LinearGradientBrush>
-            <LinearGradientBrush x:Key="recBrushBottom" StartPoint="0,0" EndPoint="0,1">
-                <LinearGradientBrush.GradientStops>
-                    <GradientStop Offset="0" Color="#00000000"/>
-                    <GradientStop Offset="1" Color="{StaticResource PhoneBackgroundColor}"/>
-                </LinearGradientBrush.GradientStops>
-            </LinearGradientBrush>
-        </Grid.Resources>
+        
         <Grid>
            
             <ListBox ItemsSource="{Binding FeedItems}" x:Name="_listbox" SelectionChanged="ListBoxSelectionChanged" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="5 5 10 5">
-                            <TextBlock Text="{Binding Title}" FontSize="26" TextWrapping="Wrap"/>
+                        <StackPanel Margin="10 5 10 5">
+                            <TextBlock Text="{Binding Title}" FontSize="32" TextWrapping="Wrap"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -53,9 +40,6 @@
                 <TextBlock Margin="20 -60 20 0" TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=LocalizedResources.FeedErrorMessage, Source={StaticResource LocalizedStrings}}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>
-            <Rectangle Height="20" Fill="{StaticResource recBrushTop }" VerticalAlignment="Top"/>
-            <Rectangle Height="20" Fill="{StaticResource recBrushBottom }" VerticalAlignment="Bottom"/>
-
         </Grid>
     </Grid>
 </Controls:PivotItem>

@@ -160,6 +160,15 @@ namespace Reader {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to see online.
+        /// </summary>
+        public static string OpenFeed {
+            get {
+                return ResourceManager.GetString("OpenFeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to save.
         /// </summary>
         public static string Save {
